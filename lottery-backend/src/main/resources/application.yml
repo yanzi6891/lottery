@@ -1,0 +1,90 @@
+spring:
+  application:
+    name: lottery-backend
+
+  # 数据源配置
+  datasource:
+    # H2 嵌入式数据库（开发环境）
+    url: jdbc:h2:file:./data/lottery;MODE=MySQL;AUTO_SERVER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  # JPA配置
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+
+  # H2 Console
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+# 服务器配置
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    com.lottery: DEBUG
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+
+# 自定义配置
+lottery:
+  # 抽奖配置
+  draw:
+    animation-duration: 5000  # 动画时长（毫秒）
+    max-participants: 500     # 最大参与人数
+  # WebSocket配置
+  websocket:
+    heartbeat-interval: 30000  # 心跳间隔（毫秒）
+
+---
+# 生产环境配置
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  # MySQL数据库
+  datasource:
+    url: jdbc:mysql://localhost:3306/lottery?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: lottery_user
+    password: lottery_pwd
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+  h2:
+    console:
+      enabled: false
+
+logging:
+  level:
+    root: INFO
+    com.lottery: INFO
+  file:
+    name: logs/lottery.log

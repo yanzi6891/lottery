@@ -1,0 +1,46 @@
+{
+  "prizes": [
+    {
+      "name": "一等奖",
+      "level": 1,
+      "count": 3,
+      "description": "iPhone 15 Pro Max 256GB",
+      "displayOrder": 3,
+      "note": "最高奖项，最后抽取"
+    },
+    {
+      "name": "二等奖",
+      "level": 2,
+      "count": 5,
+      "description": "iPad Air 2024款",
+      "displayOrder": 2,
+      "note": "第二轮抽取"
+    },
+    {
+      "name": "三等奖",
+      "level": 3,
+      "count": 10,
+      "description": "AirPods Pro 2",
+      "displayOrder": 1,
+      "note": "首先抽取（热身）"
+    }
+  ],
+  "settings": {
+    "totalParticipants": 80,
+    "totalWinners": 18,
+    "winnerRate": "22.5%",
+    "drawOrder": "从低到高（三等奖 → 二等奖 → 一等奖）",
+    "allowDuplicateWin": false,
+    "enableRigged": true,
+    "enableCancel": true,
+    "animationDuration": 5000,
+    "autoSave": true
+  },
+  "notes": [
+    "本配置适用于80人参与的年会",
+    "总计18个中奖名额，中奖率22.5%",
+    "建议抽奖顺序：三等奖 → 二等奖 → 一等奖",
+    "可根据实际情况调整各奖项人数",
+    "level值越小等级越高（1 > 2 > 3）"
+  ]
+}
